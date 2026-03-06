@@ -1,0 +1,155 @@
+/* =========================================
+   RETRO PIXEL THEME (DATA-THEME="retro")
+   ========================================= */
+
+[data-theme="retro"] {
+    --bg-primary: #1a0a2e;
+    --bg-secondary: #251240;
+    --bg-tertiary: #301750;
+
+    --text-primary: #e0e0ff;
+    --text-secondary: #a0a0c0;
+
+    --color-primary: #39ff14;
+    /* Neon Green */
+    --color-primary-hover: #4eff2a;
+    --color-secondary: #ff6600;
+    /* Retro Orange */
+    --color-accent: #4fc3f7;
+    /* Cyan */
+    --color-success: #39ff14;
+    --color-danger: #ff003c;
+
+    --font-main: 'VT323', monospace;
+    --font-heading: 'Press Start 2P', cursive;
+    --font-mono: 'VT323', monospace;
+
+    --radius-sm: 0px;
+    --radius-md: 0px;
+    --radius-lg: 0px;
+    --radius-round: 0px;
+
+    --shadow-glow: 4px 4px 0px rgba(57, 255, 20, 0.4);
+    --shadow-glow-strong: 6px 6px 0px rgba(57, 255, 20, 0.6);
+    --shadow-card: 8px 8px 0px rgba(0, 0, 0, 0.8);
+
+    --border-glow: 2px solid var(--color-primary);
+}
+
+/* Base adjustments for Pixel fonts */
+[data-theme="retro"] body {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    text-shadow: 1px 1px 0 #000;
+}
+
+[data-theme="retro"] h1 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+}
+
+[data-theme="retro"] h2 {
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+[data-theme="retro"] h3 {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* CRT Scanline Effect Overlay */
+[data-theme="retro"]::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+/* Sharp borders */
+[data-theme="retro"] .header,
+[data-theme="retro"] .sidebar,
+[data-theme="retro"] .module-card,
+[data-theme="retro"] .quiz-card,
+[data-theme="retro"] .feature-card,
+[data-theme="retro"] .code-block,
+[data-theme="retro"] .data-table-wrapper {
+    border: 2px solid #503080;
+    box-shadow: var(--shadow-card);
+}
+
+[data-theme="retro"] .btn {
+    border: 2px solid;
+    box-shadow: 4px 4px 0 #000;
+    text-transform: uppercase;
+}
+
+[data-theme="retro"] .btn-primary {
+    background-color: var(--color-primary);
+    color: #000;
+    border-color: #fff;
+    text-shadow: none;
+}
+
+[data-theme="retro"] .btn-primary:hover:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000;
+}
+
+[data-theme="retro"] .quiz-option {
+    border: 2px solid #503080;
+    background-color: var(--bg-tertiary);
+}
+
+[data-theme="retro"] .quiz-option.selected {
+    border-color: var(--color-primary);
+    background-color: rgba(57, 255, 20, 0.2);
+    box-shadow: 4px 4px 0 var(--color-primary);
+}
+
+[data-theme="retro"] .progress-bar-container {
+    border: 2px solid #fff;
+    border-radius: 0;
+}
+
+[data-theme="retro"] .progress-bar-fill {
+    background: var(--color-secondary);
+}
+
+[data-theme="retro"] .module-card-icon,
+[data-theme="retro"] .feature-icon,
+[data-theme="retro"] .achievement-icon {
+    image-rendering: pixelated;
+}
+
+/* Typewriter/Blink effect for headings */
+[data-theme="retro"] .hero-glitch::after {
+    content: '_';
+    animation: retro-blink 1s step-end infinite;
+}
+
+@keyframes retro-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+[data-theme="retro"] .header-title {
+    font-size: 1rem;
+}
+
+/* Fix option letters for pixel font */
+[data-theme="retro"] .option-letter {
+    border-radius: 0;
+    border: 2px solid currentColor;
+    background: transparent;
+    width: 36px;
+    height: 36px;
+}

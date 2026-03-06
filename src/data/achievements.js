@@ -1,0 +1,15 @@
+export const achievements = [
+    { id: "a1", title: "Инициализация", description: "Пройти модуль Python Basics", icon: "🐍", module: 1, type: "normal" },
+    { id: "a2", title: "Массив силы", description: "Пройти модуль NumPy", icon: "🔢", module: 2, type: "normal" },
+    { id: "a3", title: "Властелин таблиц", description: "Пройти модуль Pandas", icon: "🐼", module: 3, type: "normal" },
+    { id: "a4", title: "Запрос принят", description: "Пройти модуль SQL", icon: "🗃️", module: 4, type: "normal" },
+    { id: "a5", title: "Визионер", description: "Пройти модуль Визуализация", icon: "📊", module: 5, type: "normal" },
+    { id: "a6", title: "Статистик-самурай", description: "Пройти модуль Статистика", icon: "📈", module: 6, type: "normal" },
+    { id: "a7", title: "Детектив данных", description: "Пройти модуль EDA", icon: "🔍", module: 7, type: "normal" },
+    { id: "a8", title: "Инженер признаков", description: "Пройти модуль Feature Engineering", icon: "🛠️", module: 8, type: "normal" },
+    { id: "a9", title: "Машинный разум", description: "Пройти модуль Machine Learning", icon: "🤖", module: 9, type: "normal" },
+    { id: "a10", title: "DATA SENSEI", description: "Пройти все 9 модулей", icon: "🏆", module: null, type: "gold" },
+    { id: "s1", title: "Красная таблетка", description: "Найти секрет Морфеуса", icon: "💊", module: null, type: "secret" },
+    { id: "s2", title: "Konami Master", description: "Ввести код Konami", icon: "🎮", module: null, type: "secret" },
+    { id: "s3", title: "42", description: "Найти ответ на главный вопрос", icon: "❓", module: null, type: "secret" },
+];

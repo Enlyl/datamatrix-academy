@@ -1,0 +1,143 @@
+/* =========================================
+   MATRIX THEME (DATA-THEME="matrix")
+   ========================================= */
+
+[data-theme="matrix"] {
+    --bg-primary: #000000;
+    --bg-secondary: #051005;
+    --bg-tertiary: #0a1f0a;
+
+    --text-primary: #00ff41;
+    --text-secondary: #008f11;
+
+    --color-primary: #00ff41;
+    /* Hacker Green */
+    --color-primary-hover: #aaffc3;
+    --color-secondary: #008f11;
+    --color-accent: #ffffff;
+    --color-success: #00ff41;
+    --color-danger: #ff0000;
+
+    --font-main: 'Share Tech Mono', monospace;
+    --font-heading: 'Share Tech Mono', monospace;
+    --font-mono: 'Share Tech Mono', monospace;
+
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --radius-lg: 6px;
+    --radius-round: 50%;
+
+    --shadow-glow: 0 0 10px rgba(0, 255, 65, 0.4);
+    --shadow-glow-strong: 0 0 20px rgba(0, 255, 65, 0.6);
+    --shadow-card: inset 0 0 20px rgba(0, 255, 65, 0.1);
+
+    --border-glow: 1px solid var(--color-primary);
+}
+
+/* Terminal aesthetic overrides */
+[data-theme="matrix"] body {
+    text-shadow: 0 0 2px rgba(0, 255, 65, 0.8);
+}
+
+[data-theme="matrix"] .header {
+    border-bottom: 2px solid var(--color-secondary);
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+[data-theme="matrix"] .sidebar {
+    border-right: 2px dashed var(--color-secondary);
+}
+
+[data-theme="matrix"] .module-card,
+[data-theme="matrix"] .quiz-card,
+[data-theme="matrix"] .feature-card,
+[data-theme="matrix"] .code-block,
+[data-theme="matrix"] .data-table-wrapper {
+    background-color: black;
+    border: 1px solid var(--color-secondary);
+    box-shadow: none;
+}
+
+[data-theme="matrix"] .module-card:hover:not(.locked) {
+    border-color: var(--color-primary);
+    box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.3);
+}
+
+[data-theme="matrix"] .btn {
+    background: black;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 0;
+    text-shadow: 0 0 5px var(--color-primary);
+}
+
+[data-theme="matrix"] .btn-primary:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: black;
+    text-shadow: none;
+}
+
+[data-theme="matrix"] .progress-bar-container {
+    border: 1px solid var(--color-secondary);
+    background: black;
+}
+
+[data-theme="matrix"] .progress-bar-fill {
+    background: var(--color-primary);
+    box-shadow: none;
+}
+
+[data-theme="matrix"] .quiz-option {
+    background: black;
+    border: 1px solid var(--color-secondary);
+    border-radius: 0;
+}
+
+[data-theme="matrix"] .quiz-option.selected {
+    background-color: rgba(0, 255, 65, 0.1);
+    border-color: var(--color-primary);
+    box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+[data-theme="matrix"] .code-textarea {
+    background-color: black;
+    color: var(--color-primary);
+    border: 1px solid var(--color-secondary);
+}
+
+/* Digital Rain Background Effect Placeholder (CSS only) */
+[data-theme="matrix"] .app-body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        repeating-linear-gradient(0deg,
+            rgba(0, 255, 65, 0.1) 0px,
+            rgba(0, 255, 65, 0.1) 1px,
+            transparent 1px,
+            transparent 20px),
+        repeating-linear-gradient(90deg,
+            rgba(0, 255, 65, 0.05) 0px,
+            rgba(0, 255, 65, 0.05) 1px,
+            transparent 1px,
+            transparent 20px);
+}
+
+[data-theme="matrix"] .module-number::before {
+    content: "> ";
+}
+
+[data-theme="matrix"] h1,
+[data-theme="matrix"] h2,
+[data-theme="matrix"] h3 {
+    text-transform: lowercase;
+}
+
+[data-theme="matrix"] .lesson-breadcrumb span::before {
+    content: "./";
+}
