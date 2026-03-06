@@ -59,9 +59,5 @@ An interactive, gamified Data Science course designed to take you from Zero to J
    npm run build
    ```
 
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
 ---
 *Built with ❤️ for future Data Scientists.*
