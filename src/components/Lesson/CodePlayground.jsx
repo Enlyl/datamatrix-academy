@@ -87,7 +87,11 @@ export default function CodePlayground({ initialCode, expectedOutput, successMes
                 const finalResult = stdout.join('\n') || '(Код выполнен, вывода нет)';
                 setOutput(finalResult);
 
-                if (expectedOutput && finalResult.toLowerCase().includes(expectedOutput.toLowerCase())) {
+                // Validation: Check if ANY line of the output contains the expected string
+                const lines_out = stdout.map(s => s.toLowerCase().trim());
+                const isCorrect = !expectedOutput || lines_out.some(line => line.includes(expectedOutput.toLowerCase().trim()));
+
+                if (isCorrect && expectedOutput) {
                     setStatus('success');
                 } else if (!expectedOutput) {
                     setStatus('idle');
