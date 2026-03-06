@@ -10,30 +10,84 @@ export default function CodePlayground({ initialCode, expectedOutput, successMes
         setStatus('running');
         setOutput('');
 
-        // Simulation of Python execution
         setTimeout(() => {
             try {
-                // Very basic simulation for educational purposes
-                let result = '';
-                if (code.includes('print(')) {
-                    // Extract content of print()
-                    const matches = code.match(/print\(([^)]+)\)/g);
-                    if (matches) {
-                        result = matches.map(m => {
-                            let content = m.slice(6, -1);
-                            if (content.startsWith('"') || content.startsWith("'")) {
-                                return content.slice(1, -1);
-                            }
-                            return `[Value of ${content}]`;
-                        }).join('\n');
+                let stdout = [];
+                let variables = {};
+                const lines = code.split('\n');
+
+                lines.forEach(line => {
+                    const trimmed = line.trim();
+                    if (!trimmed || trimmed.startsWith('#')) return;
+
+                    // 1. Handle Assignment: var = value
+                    if (trimmed.includes('=') && !trimmed.startsWith('print')) {
+                        const [name, valEx] = trimmed.split('=').map(s => s.trim());
+                        let value = valEx;
+
+                        // Parse basic types
+                        if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+                            value = value.slice(1, -1);
+                        } else if (value === 'True') {
+                            value = true;
+                        } else if (value === 'False') {
+                            value = false;
+                        } else if (!isNaN(value)) {
+                            value = Number(value);
+                        }
+
+                        variables[name] = value;
                     }
-                } else {
-                    result = '(Код выполнен, но ничего не выведено. Используй print())';
-                }
 
-                setOutput(result);
+                    // 2. Handle print(...)
+                    if (trimmed.startsWith('print(') && trimmed.endsWith(')')) {
+                        let content = trimmed.slice(6, -1).trim();
 
-                if (expectedOutput && result.toLowerCase().includes(expectedOutput.toLowerCase())) {
+                        // Handle f-strings: f"..."
+                        if (content.startsWith('f"') || content.startsWith("f'")) {
+                            let str = content.slice(2, -1);
+                            // Simple {var} replacement
+                            const matches = str.match(/\{([^}]+)\}/g);
+                            if (matches) {
+                                matches.forEach(m => {
+                                    const varName = m.slice(1, -1).trim();
+                                    str = str.replace(m, variables[varName] !== undefined ? variables[varName] : `[Error: ${varName} not defined]`);
+                                });
+                            }
+                            stdout.push(str);
+                        }
+                        // Handle type(...)
+                        else if (content.startsWith('type(') && content.endsWith(')')) {
+                            const varName = content.slice(5, -1).trim();
+                            const val = variables[varName];
+                            if (val === undefined) {
+                                stdout.push(`<class 'undefined'>`);
+                            } else if (typeof val === 'string') {
+                                stdout.push(`<class 'str'>`);
+                            } else if (typeof val === 'number') {
+                                if (Number.isInteger(val)) stdout.push(`<class 'int'>`);
+                                else stdout.push(`<class 'float'>`);
+                            } else if (typeof val === 'boolean') {
+                                stdout.push(`<class 'bool'>`);
+                            }
+                        }
+                        // Handle regular strings
+                        else if ((content.startsWith('"') && content.endsWith('"')) || (content.startsWith("'") && content.endsWith("'"))) {
+                            stdout.push(content.slice(1, -1));
+                        }
+                        // Handle variables
+                        else if (variables[content] !== undefined) {
+                            stdout.push(String(variables[content]));
+                        } else {
+                            stdout.push(content);
+                        }
+                    }
+                });
+
+                const finalResult = stdout.join('\n') || '(Код выполнен, вывода нет)';
+                setOutput(finalResult);
+
+                if (expectedOutput && finalResult.toLowerCase().includes(expectedOutput.toLowerCase())) {
                     setStatus('success');
                 } else if (!expectedOutput) {
                     setStatus('idle');
@@ -41,7 +95,7 @@ export default function CodePlayground({ initialCode, expectedOutput, successMes
                     setStatus('error');
                 }
             } catch (e) {
-                setOutput(`Error: ${e.message}`);
+                setOutput(`Python Simulation Error: ${e.message}`);
                 setStatus('error');
             }
         }, 800);
