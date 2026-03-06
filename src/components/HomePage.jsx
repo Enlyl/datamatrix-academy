@@ -42,8 +42,25 @@ export default function HomePage() {
                     </Link>
                 )}
                 {!nextLesson && progress >= 100 && (
-                    <div className="hero-complete">🎉 Курс пройден! Ты — DATA SENSEI!</div>
+                    <div className="hero-complete">
+                        🎉 Курс пройден! Ты — DATA SENSEI!
+                        <Link to="/certificate" className="btn btn-gold btn-sm" style={{ marginLeft: '1rem' }}>🎓 Получить диплом</Link>
+                    </div>
                 )}
+
+                <div className="home-roadmap">
+                    <div className="roadmap-line" />
+                    {modules.map((mod, i) => {
+                        const isDone = getModuleProgress(mod.id) >= 100;
+                        const isLocked = !isLessonUnlocked(mod.lessons[0].id);
+                        return (
+                            <div key={mod.id} className={`roadmap-step ${isDone ? 'done' : ''} ${isLocked ? 'locked' : ''}`}>
+                                <div className="step-circle" title={mod.title}>{mod.icon}</div>
+                                <div className="step-label">M{mod.id}</div>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
 
             <div className="home-modules">
@@ -98,6 +115,16 @@ export default function HomePage() {
                         <span className="feature-icon">🏆</span>
                         <h3>Ачивки</h3>
                         <p>13 достижений + секретные пасхалки</p>
+                    </Link>
+                    <Link to="/certificate" className="feature-card">
+                        <span className="feature-icon">🎓</span>
+                        <h3>Сертификат</h3>
+                        <p>Получи именной диплом после курса</p>
+                    </Link>
+                    <Link to="/final-project" className="feature-card feature-highlight">
+                        <span className="feature-icon">🚀</span>
+                        <h3>Финальный проект</h3>
+                        <p>Проверь силы на реальном кейсе</p>
                     </Link>
                     <div className="feature-card">
                         <span className="feature-icon">🎨</span>

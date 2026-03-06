@@ -20,9 +20,16 @@ is_active = True             # bool`
                 },
                 { type: "text", content: "### 3. Практический пример\nВ работе с данными мы часто используем **f-строки** для красивых отчетов и `type()` для проверки, не превратилось ли число в текст по ошибке:" },
                 {
-                    type: "code", language: "python", content: `print(f"Игра {game_title} стоит \${price}")
-# Проверка типа критична при загрузке данных
-print(type(price))  # <class 'float'>`
+                    type: "code", language: "python", content: "print(f\"Игра {game_title} стоит \\${price}\")\n# Проверка типа критична при загрузке данных\nprint(type(price))  # <class 'float'>"
+                },
+                {
+                    type: "playground",
+                    config: {
+                        initialCode: 'name = "Data Scientist"\nprint(f"Hello, I am a {name}")\nprint(type(name))',
+                        expectedOutput: "Data Scientist",
+                        successMessage: "Прекрасно! Ты освоил переменные и f-строки.",
+                        hint: "Попробуй изменить значение в переменной name."
+                    }
                 }
             ],
             quiz: {

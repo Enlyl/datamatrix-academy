@@ -6,6 +6,8 @@ import CodeBlock from './CodeBlock';
 import DataTable from './DataTable';
 import QuizMultiChoice from './QuizMultiChoice';
 import QuizCodeInput from './QuizCodeInput';
+import InteractiveChart from './InteractiveChart';
+import CodePlayground from './CodePlayground';
 
 export default function LessonPage() {
     const { lessonId } = useParams();
@@ -94,6 +96,10 @@ export default function LessonPage() {
                             return <CodeBlock key={i} code={block.content} language={block.language || 'python'} />;
                         case 'table':
                             return <div key={i}><p className="theory-text">{block.comment}</p><DataTable /></div>;
+                        case 'chart':
+                            return <InteractiveChart key={i} {...block.config} />;
+                        case 'playground':
+                            return <CodePlayground key={i} {...block.config} />;
                         default:
                             return null;
                     }

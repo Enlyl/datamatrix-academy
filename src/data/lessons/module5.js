@@ -15,6 +15,15 @@ plt.plot([1, 2, 3], [10, 20, 15])
 plt.title("Мой первый график")
 plt.show() # Показать результат`
                 },
+                {
+                    type: "chart",
+                    config: {
+                        type: "line",
+                        xField: "release_year",
+                        yField: "sales_mln",
+                        title: "Тренд продаж по годам (Line Chart)"
+                    }
+                },
                 { type: "text", content: "### 3. Практический пример: Читаемость\nГолый график в DS — это плохой тон. Профи всегда добавляют «подписи», чтобы другие понимали, что на картинке:" },
                 {
                     type: "code", language: "python", content: `plt.plot(df['date'], df['sales'])
@@ -46,6 +55,24 @@ sns.histplot(df['price'])`
                 {
                     type: "code", language: "python", content: `sns.scatterplot(data=df, x='price', y='sales', hue='genre')
 # Параметр hue раскрасит точки по жанрам автоматически!`
+                },
+                {
+                    type: "chart",
+                    config: {
+                        type: "scatter",
+                        xField: "review_score",
+                        yField: "sales_mln",
+                        title: "Связь оценки и продаж (Scatter Plot)"
+                    }
+                },
+                {
+                    type: "chart",
+                    config: {
+                        type: "bar",
+                        xField: "genre",
+                        yField: "sales_mln",
+                        title: "Продажи по жанрам (Bar Chart)"
+                    }
                 }
             ],
             quiz: {

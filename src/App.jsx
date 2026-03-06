@@ -9,6 +9,8 @@ import CheatSheetPage from './components/CheatSheetPage';
 import AchievementList from './components/Achievements/AchievementList';
 import AchievementPopup from './components/Achievements/AchievementPopup';
 import HomePage from './components/HomePage';
+import CertificatePage from './components/CertificatePage';
+import FinalProjectPage from './components/FinalProjectPage';
 import EasterEggs from './components/EasterEggs';
 import { useAchievements } from './context/AchievementContext';
 
@@ -29,6 +31,8 @@ export default function App() {
                         <Route path="/glossary" element={<GlossaryPage />} />
                         <Route path="/cheatsheet" element={<CheatSheetPage />} />
                         <Route path="/achievements" element={<AchievementList />} />
+                        <Route path="/certificate" element={<CertificatePage />} />
+                        <Route path="/final-project" element={<FinalProjectPage />} />
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </main>

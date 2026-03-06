@@ -111,8 +111,165 @@ button {
 }
 
 /* =========================================
-   HEADER
+   INTERACTIVE CHARTS
    ========================================= */
+.interactive-chart-wrapper {
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 2rem 0;
+  box-shadow: var(--shadow-card);
+}
+
+.chart-title {
+  color: var(--color-primary);
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+  font-family: var(--font-heading);
+}
+
+.chart-caption {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+}
+
+/* =========================================
+   CODE PLAYGROUND
+   ========================================= */
+.code-playground {
+  background-color: #1e1e1e;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 2rem 0;
+  border: 1px solid #333;
+  box-shadow: var(--shadow-card);
+}
+
+.playground-header {
+  background-color: #2d2d2d;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.playground-title {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.playground-badge {
+  font-size: 0.7rem;
+  background-color: #444;
+  color: #aaa;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.playground-body {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+@media (min-width: 768px) {
+  .playground-body {
+    flex-direction: row;
+  }
+}
+
+.playground-editor {
+  flex: 1;
+  position: relative;
+  border-right: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.playground-editor textarea {
+  width: 100%;
+  flex: 1;
+  background-color: transparent;
+  color: #d4d4d4;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  padding: 1.5rem;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.run-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: var(--color-primary);
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.run-btn:hover {
+  transform: scale(1.05);
+}
+
+.run-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.playground-output {
+  flex: 0.8;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.output-label {
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.output-content {
+  flex: 1;
+  color: #ccc;
+  font-family: var(--font-mono);
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+}
+
+.playground-feedback {
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+}
+
+.playground-feedback.success {
+  background-color: rgba(0, 255, 127, 0.1);
+  color: #00ff7f;
+}
+
+.playground-feedback.error {
+  background-color: rgba(255, 69, 58, 0.1);
+  color: #ff453a;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -1260,6 +1417,42 @@ button {
   color: var(--text-primary);
 }
 
+.cheatsheet-controls {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cheatsheet-search-group {
+  margin-bottom: 3rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 2rem;
+}
+
+.cheatsheet-search-group:last-child {
+  border-bottom: none;
+}
+
+.cheatsheet-cat-title {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--color-primary);
+  padding-left: 1rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-md);
+}
+
 .cheatsheet-tab.active {
   color: var(--color-primary);
   background-color: rgba(0, 240, 255, 0.05);
@@ -1809,4 +2002,346 @@ button {
     min-width: 0;
     padding: 1rem;
   }
+
+  .home-roadmap {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .roadmap-line {
+    display: none;
+  }
+
+  .modules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-name {
+    font-size: 2rem;
+  }
+
+  .cert-title {
+    font-size: 1.5rem;
+  }
+
+  .cert-content {
+    padding: 1.5rem;
+  }
+}
+
+/* =========================================
+   ROADMAP (PROGRESS MAP)
+   ========================================= */
+.home-roadmap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.roadmap-line {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  right: 2rem;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.roadmap-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-circle {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--bg-tertiary);
+  border: 2px solid #444;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.roadmap-step.done .step-circle {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  color: #000;
+}
+
+.roadmap-step.locked .step-circle {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+.step-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.roadmap-step.done .step-label {
+  color: var(--color-primary);
+}
+
+/* =========================================
+   CERTIFICATE
+   ========================================= */
+.certificate-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.certificate-container {
+  background-color: #0a0a0a;
+  padding: 3rem;
+  margin: 3rem 0;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.1);
+}
+
+.cert-border {
+  border: 15px double #ffd700;
+  padding: 2rem;
+  background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+.cert-content {
+  border: 2px solid #555;
+  padding: 3rem;
+  position: relative;
+}
+
+.cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.cert-logo {
+  font-family: var(--font-heading);
+  letter-spacing: 5px;
+  color: #ffd700;
+  font-size: 1.2rem;
+}
+
+.cert-badge {
+  width: 80px;
+  height: 80px;
+  background-color: #ffd700;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.cert-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+.cert-name {
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 3.5rem;
+  color: #ffd700;
+  margin: 1rem 0;
+  border-bottom: 1px solid #444;
+  display: inline-block;
+  padding: 0 2rem;
+}
+
+.cert-text {
+  font-size: 1.2rem;
+  color: #aaa;
+  margin: 0.5rem 0;
+}
+
+.cert-desc {
+  color: #888;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.cert-footer {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.cert-actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.certificate-locked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.lock-icon-huge {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  animation: pulseCert 2s infinite;
+}
+
+@keyframes pulseCert {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cert-progress-bar {
+  width: 300px;
+  height: 10px;
+  background-color: #222;
+  border-radius: 5px;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.cert-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+/* =========================================
+   FINAL PROJECT
+   ========================================= */
+.final-project-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.project-container {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-card);
+}
+
+.project-steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-step-indicator {
+  font-family: var(--font-heading);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.project-step-indicator.active {
+  color: var(--color-primary);
+}
+
+.project-step-indicator.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1.6rem;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+.project-task {
+  margin-top: 2rem;
+  background-color: var(--bg-tertiary);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-task input {
+  background-color: #000;
+  border: 1px solid #444;
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  outline: none;
+}
+
+.project-task input:focus {
+  border-color: var(--color-primary);
+}
+
+.project-feedback {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.project-success {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.final-project-locked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
 }
